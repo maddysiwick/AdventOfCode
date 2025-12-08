@@ -1,3 +1,4 @@
+import functools
 input=open('Input.txt','r')
 lines = input.readlines()
 
@@ -6,6 +7,7 @@ grid=[]
 for line in lines:
     grid.append(list(line.strip("\n")))
 
+@functools.cache
 def followBeam(x,y,paths):
     global grid
     if y==len(grid)-1:
@@ -19,7 +21,7 @@ def followBeam(x,y,paths):
 
 
 start=grid[0].index('S')
-splits=followBeam(start,0,1)
+splits=followBeam(start,0,0)
 
 print(splits)
 
